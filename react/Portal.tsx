@@ -1,13 +1,20 @@
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 const Portal: React.FunctionComponent = ({ children }) => {
-  const body = window?.document?.body
+  const [mountNode, setMountNode] = useState<HTMLElement | null>(null)
 
-  if (!body) {
-    return null
+  useEffect(() => {
+    setMountNode(document.body)
+  }, [])
+
+  // During SSR and first client render (before useEffect), render inline
+  if (!mountNode) {
+    return <>{children}</>
   }
 
-  return ReactDOM.createPortal(children, body)
+  // After mount, use portal
+  return ReactDOM.createPortal(children, mountNode)
 }
 
 export default Portal

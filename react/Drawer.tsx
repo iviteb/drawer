@@ -1,11 +1,5 @@
 import type { MouseEventHandler } from 'react'
-import React, {
-  Suspense,
-  useReducer,
-  useMemo,
-  useState,
-  useEffect,
-} from 'react'
+import React, { useReducer, useMemo, useState, useEffect } from 'react'
 import { defineMessages } from 'react-intl'
 import { IconMenu } from 'vtex.store-icons'
 import { useCssHandles } from 'vtex.css-handles'
@@ -17,12 +11,11 @@ import type { ResponsiveValuesTypes } from 'vtex.responsive-values'
 
 import Portal from './Portal'
 import Overlay from './Overlay'
+import Swipable from './Swipable'
 import useLockScroll from './modules/useLockScroll'
 import DrawerCloseButton from './DrawerCloseButton'
 import { DrawerContextProvider } from './DrawerContext'
 import { isElementInsideLink } from './modules/isElementInsideLink'
-
-const Swipable = React.lazy(() => import('./Swipable'))
 
 interface MenuState {
   isOpen: boolean
@@ -229,60 +222,58 @@ function Drawer(props: Props) {
       </div>
       <Portal>
         <Overlay visible={overlayVisible} onClick={closeMenu} zIndex={zIndex} />
-        <Suspense fallback={<React.Fragment />}>
-          <Swipable
-            {...{
-              [swipeHandler]: closeMenu,
-            }}
-            enabled={isMenuOpen}
-            position={isMenuOpen ? 'center' : direction}
-            allowOutsideDrag
-            onUpdateOffset={value => {
-              setIsMoving(!(value === '0%' || value === '-100%'))
-            }}
-            className={`${handles.drawer} ${
-              isMenuOpen ? handles.opened : handles.closed
-            } ${isMoving ? handles.moving : ''} ${
-              direction === 'right' ? 'right-0' : 'left-0'
-            } fixed top-0 bottom-0 bg-base z-999 flex flex-column`}
+        <Swipable
+          {...{
+            [swipeHandler]: closeMenu,
+          }}
+          enabled={isMenuOpen}
+          position={isMenuOpen ? 'center' : direction}
+          allowOutsideDrag
+          onUpdateOffset={value => {
+            setIsMoving(!(value === '0%' || value === '-100%'))
+          }}
+          className={`${handles.drawer} ${
+            isMenuOpen ? handles.opened : handles.closed
+          } ${isMoving ? handles.moving : ''} ${
+            direction === 'right' ? 'right-0' : 'left-0'
+          } fixed top-0 bottom-0 bg-base z-999 flex flex-column`}
+          style={{
+            width: width ?? (isFullWidth ? '100%' : '85%'),
+            maxWidth,
+            minWidth: 280,
+            pointerEvents: isMenuOpen ? 'auto' : 'none',
+            zIndex,
+          }}
+        >
+          <div
+            className={`${handles.drawerContent} overflow-y-auto`}
             style={{
-              width: width ?? (isFullWidth ? '100%' : '85%'),
-              maxWidth,
-              minWidth: 280,
-              pointerEvents: isMenuOpen ? 'auto' : 'none',
-              zIndex,
+              WebkitOverflowScrolling: 'touch',
             }}
           >
+            {hasHeaderBlock ? (
+              <ExtensionPoint id="drawer-header" />
+            ) : (
+              header ?? (
+                <div className={`flex ${handles.closeIconContainer}`}>
+                  <DrawerCloseButton />
+                </div>
+              )
+            )}
+            {/* The onClick handler below is done to fix a bug regarding drawers that wouldn't close when
+             * navigating to the same page (e.g. from a search result page to another). It is not an element
+             * intended to be clicked directly, so there's probably no need for it to have a role and to
+             * handle keyboard events specifically */}
+            {/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
             <div
-              className={`${handles.drawerContent} overflow-y-auto`}
-              style={{
-                WebkitOverflowScrolling: 'touch',
-              }}
+              className={`${handles.childrenContainer} flex flex-grow-1`}
+              onClick={handleContainerClick}
             >
-              {hasHeaderBlock ? (
-                <ExtensionPoint id="drawer-header" />
-              ) : (
-                header ?? (
-                  <div className={`flex ${handles.closeIconContainer}`}>
-                    <DrawerCloseButton />
-                  </div>
-                )
-              )}
-              {/* The onClick handler below is done to fix a bug regarding drawers that wouldn't close when
-               * navigating to the same page (e.g. from a search result page to another). It is not an element
-               * intended to be clicked directly, so there's probably no need for it to have a role and to
-               * handle keyboard events specifically */}
-              {/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-              <div
-                className={`${handles.childrenContainer} flex flex-grow-1`}
-                onClick={handleContainerClick}
-              >
-                {shouldRenderChildren ? children : <></>}
-              </div>
-              {/* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+              {shouldRenderChildren ? children : <></>}
             </div>
-          </Swipable>
-        </Suspense>
+            {/* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+          </div>
+        </Swipable>
       </Portal>
     </DrawerContextProvider>
   )
