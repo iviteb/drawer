@@ -1,3 +1,4 @@
 {
-  "admin/editor.drawer.title": "Drawer"
+  "admin/editor.drawer.title": "admin/editor.drawer.title",
+  "store/drawer.close-button.label": "store/drawer.close-button.label"
 }

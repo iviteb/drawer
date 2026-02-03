@@ -3,7 +3,9 @@
 # Drawer
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The **Drawer** component is a sliding panel that displays additional options and menus when expanded. It is typically used in mobile layouts and responsive web designs where screen space is limited.
@@ -100,7 +102,7 @@ When closed, the **Drawer** component is represented by an icon button positione
 If you are using this component as a standalone module, you will need to import it into the specific component where you want to use it. For example:
 
 ```tsx
-import { Drawer, DrawerHeader, DrawerCloseButton } from "fstudio.store-drawer";
+import { Drawer, DrawerHeader, DrawerCloseButton } from 'fstudio.store-drawer'
 
 const Menu = () => (
   <Drawer
@@ -119,30 +121,32 @@ const Menu = () => (
       <li>Link 6</li>
     </ul>
   </Drawer>
-);
+)
 ```
 
 ### Props
 
 #### `drawer`
 
-| Prop name              | Type                                                                       | Description                                                                                                                                                                                                                                                                                                                              | Default value  |
-| ---------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| `maxWidth`             | `number` or `string`                                                       | Defines the maximum width of the open drawer.                                                                                                                                                                                                                                                                                            | `450`          |
-| `isFullWidth`          | `boolean`                                                                  | Controls whether the open drawer should occupy the full available width.                                                                                                                                                                                                                                                                 | `false`        |
-| `slideDirection`       | `'horizontal'`&#124;`'vertical'`&#124;`'rightToLeft'`&#124;`'leftToRight'` | Controls the direction of the opening animation for the drawer.                                                                                                                                                                                                                                                                          | `'horizontal'` |
-| `backdropMode`         | `'default'`&#124;`'none'`                                                  | Controls whether the backdrop should be displayed when the drawer is open.                                                                                                                                                                                                                                                               |                |
-| `renderingStrategy`    | `'lazy'`&#124;`'eager'`                                                    | Controls the rendering strategy for the children of the drawer component. It determines whether the children should be rendered only when the drawer is clicked (`lazy`) or immediately when the page loads (`eager`).  Enabling the `eager` strategy may improve SEO performance. However, it may also result in slower page rendering. | `'lazy'`       |
-| `customPixelEventId`   | `string`                                                                   | Defines the store event ID responsible for triggering the `drawer` to automatically open on the interface.                                                                                                                                                                                                                                       | `undefined`    |
-| `customPixelEventName` | `string`                                                                   | Defines the store event name responsible for triggering the `drawer` to automatically open on the interface. Some examples are: `'addToCart'` and `'removeFromCart'` events. Note that if no `customPixelEventId` is set, using this prop will cause the drawer to open in every event with the specified name.                                  | `undefined`    |
+| Prop name              | Type                                                                       | Description                                                                                                                                                                                                                                                                                                                             | Default value  |
+| ---------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| `maxWidth`             | `number` or `string`                                                       | Defines the maximum width of the open drawer.                                                                                                                                                                                                                                                                                           | `450`          |
+| `isFullWidth`          | `boolean`                                                                  | Controls whether the open drawer should occupy the full available width.                                                                                                                                                                                                                                                                | `false`        |
+| `slideDirection`       | `'horizontal'`&#124;`'vertical'`&#124;`'rightToLeft'`&#124;`'leftToRight'` | Controls the direction of the opening animation for the drawer.                                                                                                                                                                                                                                                                         | `'horizontal'` |
+| `backdropMode`         | `'default'`&#124;`'none'`                                                  | Controls whether the backdrop should be displayed when the drawer is open.                                                                                                                                                                                                                                                              |                |
+| `renderingStrategy`    | `'lazy'`&#124;`'eager'`                                                    | Controls the rendering strategy for the children of the drawer component. It determines whether the children should be rendered only when the drawer is clicked (`lazy`) or immediately when the page loads (`eager`). Enabling the `eager` strategy may improve SEO performance. However, it may also result in slower page rendering. | `'lazy'`       |
+| `customPixelEventId`   | `string`                                                                   | Defines the store event ID responsible for triggering the `drawer` to automatically open on the interface.                                                                                                                                                                                                                              | `undefined`    |
+| `customPixelEventName` | `string`                                                                   | Defines the store event name responsible for triggering the `drawer` to automatically open on the interface. Some examples are: `'addToCart'` and `'removeFromCart'` events. Note that if no `customPixelEventId` is set, using this prop will cause the drawer to open in every event with the specified name.                         | `undefined`    |
 
 #### `drawer-close-button`
 
-| Prop name | Type                     | Description                                                                            | Default value |
-| --------- | ------------------------ | -------------------------------------------------------------------------------------- | ------------- |
-| `size`    | `number`                 | Defines the size of the icon inside the button.                                         | `30`          |
-| `type`    | `'filled'`&#124;`'line'` | Defines the type of the icon.                                                           | `'line'`      |
-| `text`    | `string`                 | Defines the text inside the button. The icon will not be rendered if `text` is defined. | `undefined`   |
+| Prop name  | Type                     | Description                                                 | Default value                                    |
+| ---------- | ------------------------ | ----------------------------------------------------------- | ------------------------------------------------ |
+| `size`     | `number`                 | Defines the size of the icon inside the button.             | `30`                                             |
+| `type`     | `'filled'`&#124;`'line'` | Defines the type of the icon.                               | `'line'`                                         |
+| `text`     | `string`                 | Defines the text inside the button.                         | Intl message (`store/drawer.close-button.label`) |
+| `showIcon` | `boolean`                | Controls whether the close icon should be displayed.        | `true`                                           |
+| `showText` | `boolean`                | Controls whether the close button text should be displayed. | `false`                                          |
 
 #### `drawer-trigger`
 
@@ -167,7 +171,8 @@ In order to apply CSS customizations to this and other blocks, follow the instru
 | `drawerTriggerContainer` |
 | `openIconContainer`      |
 | `closeIconContainer`     |
-| `closeIconButton`        |
+| `closeButton`            |
+| `closeButtonLabel`       |
 | `childrenContainer`      |
 
 ## Contributors ✨
@@ -187,6 +192,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
