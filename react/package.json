@@ -1,25 +1,20 @@
 {
   "dependencies": {
-    "@vtex/css-handles": "^1.1.3",
-    "apollo-client": "^2.4.7",
-    "classnames": "^2.2.6",
-    "graphql": "^14.0.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-intl": "^4.5.1"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-intl": "^3.12.0"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.7",
-    "@types/jest": "^25.1.3",
-    "@types/react": "^16.8.14",
-    "@types/react-dom": "^16.8.4",
-    "@vtex/test-tools": "^3.0.0",
+    "@types/react": "^16.9.31",
+    "@types/react-dom": "^16.9.25",
+    "@types/node": "^13.9.8",
+    "@vtex/tsconfig": "^0.4.4",
     "typescript": "3.9.7",
-    "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@0.4.4/public/@types/vtex.css-handles",
+    "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.1/public/@types/vtex.css-handles",
     "vtex.pixel-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.pixel-manager@1.9.0/public/@types/vtex.pixel-manager",
-    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.135.1/public/@types/vtex.render-runtime",
+    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.136.1/public/@types/vtex.render-runtime",
     "vtex.responsive-values": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.4.2/public/@types/vtex.responsive-values",
     "vtex.store-icons": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-icons@0.18.0/public/@types/vtex.store-icons"
   },
-  "version": "0.18.3"
+  "version": "0.0.0"
 }

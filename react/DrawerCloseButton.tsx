@@ -19,7 +19,7 @@ const DrawerCloseButton: React.FC<Props> = ({
 }) => {
   const { close } = useDrawer()
 
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES)
 
   return (
     <button

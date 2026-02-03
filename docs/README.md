@@ -15,11 +15,11 @@ When closed, the **Drawer** component is represented by an icon button positione
 ## Configuration
 
 1. Open your store theme in the code editor of your preference.
-2. Open the `manifest.json` file and add the `vtex.store-drawer` app to your store theme dependencies as in the following:
+2. Open the `manifest.json` file and add the `fstudio.store-drawer` app to your store theme dependencies as in the following:
 
 ```json
 "dependencies": {
-  "vtex.store-drawer": "0.x"
+  "fstudio.store-drawer": "0.x"
 }
 ```
 
@@ -100,7 +100,7 @@ When closed, the **Drawer** component is represented by an icon button positione
 If you are using this component as a standalone module, you will need to import it into the specific component where you want to use it. For example:
 
 ```tsx
-import { Drawer, DrawerHeader, DrawerCloseButton } from "vtex.store-drawer";
+import { Drawer, DrawerHeader, DrawerCloseButton } from "fstudio.store-drawer";
 
 const Menu = () => (
   <Drawer

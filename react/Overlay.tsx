@@ -13,7 +13,7 @@ const Overlay: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (
   { visible, onClick, zIndex = 999 }: Props,
   ref
 ) => {
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES)
   const ariaHidden = visible ? 'false' : 'true'
 
   return (

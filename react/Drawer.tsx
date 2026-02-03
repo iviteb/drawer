@@ -1,7 +1,7 @@
+import type { MouseEventHandler } from 'react'
 import React, {
   Suspense,
   useReducer,
-  MouseEventHandler,
   useMemo,
   useState,
   useEffect,
@@ -10,11 +10,10 @@ import { defineMessages } from 'react-intl'
 import { IconMenu } from 'vtex.store-icons'
 import { useCssHandles } from 'vtex.css-handles'
 import { useChildBlock, ExtensionPoint } from 'vtex.render-runtime'
-import { usePixelEventCallback, PixelEventTypes } from 'vtex.pixel-manager'
-import {
-  MaybeResponsiveValue,
-  useResponsiveValue,
-} from 'vtex.responsive-values'
+import type { PixelEventTypes } from 'vtex.pixel-manager'
+import { usePixelEventCallback } from 'vtex.pixel-manager'
+import { useResponsiveValue } from 'vtex.responsive-values'
+import type { ResponsiveValuesTypes } from 'vtex.responsive-values'
 
 import Portal from './Portal'
 import Overlay from './Overlay'
@@ -45,10 +44,9 @@ type Height = '100%' | 'auto' | 'fullscreen'
 type Width = '100%' | 'auto'
 type BackdropMode = 'visible' | 'none'
 type RenderingStrategy = 'lazy' | 'eager'
+type ResponsiveValue<T> = ResponsiveValuesTypes.ResponsiveValue<T>
 
 interface Props {
-  actionIconId?: string
-  dismissIconId?: string
   position: Position
   width?: Width
   height?: Height
@@ -58,7 +56,7 @@ interface Props {
   children: React.ReactNode
   customIcon?: React.ReactElement
   header?: React.ReactElement
-  backdropMode?: MaybeResponsiveValue<BackdropMode>
+  backdropMode?: ResponsiveValue<BackdropMode>
   renderingStrategy?: RenderingStrategy
   customPixelEventId?: PixelEventTypes.PixelData['id']
   customPixelEventName?: PixelEventTypes.PixelData['event']
@@ -133,7 +131,7 @@ function Drawer(props: Props) {
     zIndex = 999,
   } = props
 
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES)
   const backdropMode = useResponsiveValue(backdropModeProp)
   const hasTriggerBlock = Boolean(useChildBlock({ id: 'drawer-trigger' }))
   const hasHeaderBlock = Boolean(useChildBlock({ id: 'drawer-header' }))
